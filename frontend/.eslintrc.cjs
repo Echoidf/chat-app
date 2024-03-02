@@ -18,4 +18,7 @@ module.exports = {
       { allowConstantExport: true },
     ],
   },
+  noUnusedVars: [
+    "warn", { "varsIgnorePattern": "VARIABLE_NAME"}
+  ]
 }
