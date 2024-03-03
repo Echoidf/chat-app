@@ -31,7 +31,7 @@ export const sendMessage = async (req, res) => {
     // this will run in parallel
     await Promise.all([newMessage.save(), conversation.save()]);
 
-    res.status(200).json({ message: "Message sent successfully" });
+    res.status(200).json(newMessage);
   } catch (error) {
     console.log(error.message);
     res.status(500).json({ message: "Failed to send message" });
@@ -47,11 +47,11 @@ export const getMessages = async (req, res) => {
       participants: { $all: [senderId, userToChatId] },
     }).populate("messages");
 
-    if(!conversation) {
-      res.status(200).json({ messages: []});
+    if(!conversation || conversation.messages.length === 0) {
+      return res.status(200).json({ messages: []});
     }
 
-    res.status(200).json(conversation.messages);
+    res.status(200).json(conversation?.messages? conversation.messages : []);
   } catch (error) {
     console.log("Error in Message controller: ", error.message);
     res.status(500).json({ message: "Failed to get messages" });
