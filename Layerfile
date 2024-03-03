@@ -1,5 +1,8 @@
-#This is an example webapp.io configuration for React!
-FROM node:18.19.0
+FROM vm/ubuntu:18.04
+
+RUN curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+RUN sudo apt-get install -y nodejs
+RUN sudo npm install npm@latest -g
 
 ENV MONGO_DB_URI=mongodb+srv://codearena:zql285637@cluster0.jaj2oh9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 ENV JWT_SECRET=KkUlhrOa6N/MMbFtWul+sWx16Oa1p35YBZEcAujn6B8=
