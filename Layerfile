@@ -1,9 +1,9 @@
 #This is an example webapp.io configuration for React!
-FROM node:18
+FROM node:18.19.0
 
-# node is a memory hog
-MEMORY 2G
-ENV NODE_OPTIONS=--max-old-space-size=8192
+ENV MONGO_DB_URI=mongodb+srv://codearena:zql285637@cluster0.jaj2oh9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+ENV JWT_SECRET=KkUlhrOa6N/MMbFtWul+sWx16Oa1p35YBZEcAujn6B8=
+ENV PORT=5000
 
 COPY . .
 RUN npm run build
