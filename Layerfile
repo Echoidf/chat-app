@@ -10,6 +10,6 @@ ENV PORT=5000
 
 COPY . .
 RUN npm run build
-RUN npm run start
+RUN BACKGROUND npm run start
 
 EXPOSE WEBSITE http://localhost:5000
