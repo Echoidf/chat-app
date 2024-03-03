@@ -1,0 +1,12 @@
+#This is an example webapp.io configuration for React!
+FROM node:18
+
+# node is a memory hog
+MEMORY 2G
+ENV NODE_OPTIONS=--max-old-space-size=8192
+
+COPY . .
+RUN npm run build
+RUN npm run start
+
+EXPOSE WEBSITE http://localhost:5000
